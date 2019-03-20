@@ -15,7 +15,8 @@ namespace KontakteApp
     {
         private string _connectionString = "";
         private string _caption = "";
-        
+
+        SqlConnection sqlConnection = null;
 
         public Form1()
         {
@@ -29,22 +30,10 @@ namespace KontakteApp
             _connectionString = config.ConnectionString;
             _caption = config.Caption;
 
-            FormConnect formConnect = new FormConnect();
-            formConnect.Close();
-
-
-            SqlConnection sqlConnection = null;
-
-            DataTable table = new DataTable("Kontakte");
-
-
-
             try
             {
-
-                sqlConnection = new SqlConnection(_connectionString);
-                sqlConnection.Open();
-
+                SQLHelper helper = new SQLHelper(_connectionString);
+                bool connectionOK = helper.IsConnected;
             }
             catch
             {
@@ -54,18 +43,21 @@ namespace KontakteApp
                 this.Close();
             }
 
+            DataSet dataSet = new DataSet("Personen");
+            DataTable table = new DataTable("Kontakte");
 
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from dbo.Personen", sqlConnection);
+            sqlConnection = new SqlConnection(_connectionString);
 
-            DataSet dataSet = new DataSet();
-            sqlDataAdapter.Fill(dataSet);
+            string query = "select * from dbo.Personen";
 
-            dataSet = new DataSet();
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            sqlConnection.Open();
+
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            sqlDataAdapter.Fill(table);
             dataSet.Tables.Add(table);
 
-
             this.personenTableAdapter.Fill(this.kontakteDBDataSet.Personen);
-
 
         }
 

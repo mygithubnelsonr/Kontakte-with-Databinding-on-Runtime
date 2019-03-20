@@ -20,8 +20,11 @@ namespace KontakteApp
         {
             get
             {
-                if(conn.State == System.Data.ConnectionState.Closed)
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
                     conn.Open();
+                    conn.Close();
+                }
                 return true;
             }
         }
