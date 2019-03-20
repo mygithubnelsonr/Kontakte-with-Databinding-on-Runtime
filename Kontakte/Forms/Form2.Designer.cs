@@ -508,7 +508,6 @@
             this.Text = "Papierfabrik Objekthausen - Kontakte";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kontakteDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personen2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personen2BindingNavigator)).EndInit();
             this.personen2BindingNavigator.ResumeLayout(false);
             this.personen2BindingNavigator.PerformLayout();

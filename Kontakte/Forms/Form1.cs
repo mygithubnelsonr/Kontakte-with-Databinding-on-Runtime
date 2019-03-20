@@ -29,6 +29,10 @@ namespace KontakteApp
             _connectionString = config.ConnectionString;
             _caption = config.Caption;
 
+            FormConnect formConnect = new FormConnect();
+            formConnect.Close();
+
+
             SqlConnection sqlConnection = null;
 
             DataTable table = new DataTable("Kontakte");
@@ -93,5 +97,10 @@ namespace KontakteApp
             form2.ShowDialog();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(this.Owner != null)
+                this.Owner.Dispose();
+        }
     }
 }

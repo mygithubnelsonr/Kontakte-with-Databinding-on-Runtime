@@ -144,7 +144,6 @@
             this.checkBoxSecurity.TabIndex = 4;
             this.checkBoxSecurity.UseVisualStyleBackColor = true;
             this.checkBoxSecurity.CheckedChanged += new System.EventHandler(this.checkBoxSecurity_CheckedChanged);
-            this.checkBoxSecurity.Click += new System.EventHandler(this.checkBoxSecurity_Click);
             // 
             // label5
             // 

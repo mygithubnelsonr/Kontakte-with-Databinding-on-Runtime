@@ -81,7 +81,8 @@ namespace KontakteApp
                     MessageBox.Show("the connection string was successfully saved", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Form1 form1 = new Form1();
-                    form1.ShowDialog();
+                    form1.Show(this);
+                    this.Hide();
 
                 }
                 else
@@ -95,11 +96,6 @@ namespace KontakteApp
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void checkBoxSecurity_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void checkBoxSecurity_CheckedChanged(object sender, EventArgs e)
