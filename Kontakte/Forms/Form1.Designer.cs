@@ -39,10 +39,8 @@
             System.Windows.Forms.Label anrufLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.personenBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.kontakteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.personenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kontakteDBDataSet = new KontakteApp.KontakteDBDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -54,13 +52,12 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.personenBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.kontakteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vornameTextBox = new System.Windows.Forms.TextBox();
             this.nachnameTextBox = new System.Windows.Forms.TextBox();
             this.firmaTextBox = new System.Windows.Forms.TextBox();
             this.kundeCheckBox = new System.Windows.Forms.CheckBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.personenTableAdapter = new KontakteApp.KontakteDBDataSetTableAdapters.PersonenTableAdapter();
-            this.tableAdapterManager = new KontakteApp.KontakteDBDataSetTableAdapters.TableAdapterManager();
             this.telefonTextBox = new System.Windows.Forms.TextBox();
             this.kontakt_IDTextBox = new System.Windows.Forms.TextBox();
             this.anrufDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -69,6 +66,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showGridFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kontakteDataSet = new System.Data.DataSet();
             vornameLabel = new System.Windows.Forms.Label();
             nachnameLabel = new System.Windows.Forms.Label();
             firmaLabel = new System.Windows.Forms.Label();
@@ -78,11 +76,11 @@
             kontakt_IDLabel = new System.Windows.Forms.Label();
             anrufLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personenBindingNavigator)).BeginInit();
-            this.personenBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kontakteDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteBindingNavigator)).BeginInit();
+            this.kontakteBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // vornameLabel
@@ -167,14 +165,13 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // personenBindingNavigator
+            // kontakteBindingNavigator
             // 
-            this.personenBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.personenBindingNavigator.BindingSource = this.personenBindingSource;
-            this.personenBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.personenBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.personenBindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.personenBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kontakteBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.kontakteBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.kontakteBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.kontakteBindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kontakteBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
@@ -187,16 +184,16 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.personenBindingNavigatorSaveItem});
-            this.personenBindingNavigator.Location = new System.Drawing.Point(0, 320);
-            this.personenBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.personenBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.personenBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.personenBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.personenBindingNavigator.Name = "personenBindingNavigator";
-            this.personenBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.personenBindingNavigator.Size = new System.Drawing.Size(522, 25);
-            this.personenBindingNavigator.TabIndex = 1;
-            this.personenBindingNavigator.Text = "bindingNavigator1";
+            this.kontakteBindingNavigator.Location = new System.Drawing.Point(0, 320);
+            this.kontakteBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.kontakteBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.kontakteBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.kontakteBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.kontakteBindingNavigator.Name = "kontakteBindingNavigator";
+            this.kontakteBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.kontakteBindingNavigator.Size = new System.Drawing.Size(522, 25);
+            this.kontakteBindingNavigator.TabIndex = 1;
+            this.kontakteBindingNavigator.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -206,16 +203,6 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // personenBindingSource
-            // 
-            this.personenBindingSource.DataMember = "Personen";
-            this.personenBindingSource.DataSource = this.kontakteDBDataSet;
-            // 
-            // kontakteDBDataSet
-            // 
-            this.kontakteDBDataSet.DataSetName = "KontakteDBDataSet";
-            this.kontakteDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -300,11 +287,14 @@
             this.personenBindingNavigatorSaveItem.Name = "personenBindingNavigatorSaveItem";
             this.personenBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.personenBindingNavigatorSaveItem.Text = "Save Data";
-            this.personenBindingNavigatorSaveItem.Click += new System.EventHandler(this.personenBindingNavigatorSaveItem_Click_1);
+            this.personenBindingNavigatorSaveItem.Click += new System.EventHandler(this.kontakteBindingNavigatorSaveItem_Click);
+            // 
+            // kontakteBindingSource
+            // 
+            this.kontakteBindingSource.DataMember = "Personen";
             // 
             // vornameTextBox
             // 
-            this.vornameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Vorname", true));
             this.vornameTextBox.Location = new System.Drawing.Point(89, 76);
             this.vornameTextBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.vornameTextBox.Name = "vornameTextBox";
@@ -313,7 +303,6 @@
             // 
             // nachnameTextBox
             // 
-            this.nachnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Nachname", true));
             this.nachnameTextBox.Location = new System.Drawing.Point(89, 116);
             this.nachnameTextBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.nachnameTextBox.Name = "nachnameTextBox";
@@ -322,7 +311,6 @@
             // 
             // firmaTextBox
             // 
-            this.firmaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Firma", true));
             this.firmaTextBox.Location = new System.Drawing.Point(89, 156);
             this.firmaTextBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.firmaTextBox.Name = "firmaTextBox";
@@ -331,7 +319,6 @@
             // 
             // kundeCheckBox
             // 
-            this.kundeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.personenBindingSource, "Kunde", true));
             this.kundeCheckBox.Location = new System.Drawing.Point(89, 276);
             this.kundeCheckBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.kundeCheckBox.Name = "kundeCheckBox";
@@ -341,26 +328,14 @@
             // 
             // emailTextBox
             // 
-            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Email", true));
             this.emailTextBox.Location = new System.Drawing.Point(89, 236);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(299, 20);
             this.emailTextBox.TabIndex = 11;
             // 
-            // personenTableAdapter
-            // 
-            this.personenTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.PersonenTableAdapter = this.personenTableAdapter;
-            this.tableAdapterManager.UpdateOrder = KontakteApp.KontakteDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // telefonTextBox
             // 
-            this.telefonTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Telefon", true));
             this.telefonTextBox.Location = new System.Drawing.Point(89, 196);
             this.telefonTextBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.telefonTextBox.Name = "telefonTextBox";
@@ -370,7 +345,6 @@
             // kontakt_IDTextBox
             // 
             this.kontakt_IDTextBox.BackColor = System.Drawing.SystemColors.Menu;
-            this.kontakt_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Kontakt_ID", true));
             this.kontakt_IDTextBox.Enabled = false;
             this.kontakt_IDTextBox.Location = new System.Drawing.Point(89, 36);
             this.kontakt_IDTextBox.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
@@ -380,7 +354,6 @@
             // 
             // anrufDateTimePicker
             // 
-            this.anrufDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.personenBindingSource, "Anruf", true));
             this.anrufDateTimePicker.Location = new System.Drawing.Point(188, 276);
             this.anrufDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.anrufDateTimePicker.Name = "anrufDateTimePicker";
@@ -438,6 +411,10 @@
             this.showGridFormToolStripMenuItem.Text = "Show Grid Form";
             this.showGridFormToolStripMenuItem.Click += new System.EventHandler(this.showGridFormToolStripMenuItem_Click);
             // 
+            // kontakteDataSet
+            // 
+            this.kontakteDataSet.DataSetName = "NewDataSet";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,7 +439,7 @@
             this.Controls.Add(this.nachnameTextBox);
             this.Controls.Add(vornameLabel);
             this.Controls.Add(this.vornameTextBox);
-            this.Controls.Add(this.personenBindingNavigator);
+            this.Controls.Add(this.kontakteBindingNavigator);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(538, 384);
@@ -473,13 +450,13 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personenBindingNavigator)).EndInit();
-            this.personenBindingNavigator.ResumeLayout(false);
-            this.personenBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kontakteDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteBindingNavigator)).EndInit();
+            this.kontakteBindingNavigator.ResumeLayout(false);
+            this.kontakteBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,11 +465,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private KontakteApp.KontakteDBDataSet kontakteDBDataSet;
-        private System.Windows.Forms.BindingSource personenBindingSource;
-        private KontakteApp.KontakteDBDataSetTableAdapters.PersonenTableAdapter personenTableAdapter;
-        private KontakteApp.KontakteDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator personenBindingNavigator;
+        private System.Windows.Forms.BindingSource kontakteBindingSource;
+        private System.Windows.Forms.BindingNavigator kontakteBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
@@ -518,6 +492,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showGridFormToolStripMenuItem;
+        private System.Data.DataSet kontakteDataSet;
     }
 }
 

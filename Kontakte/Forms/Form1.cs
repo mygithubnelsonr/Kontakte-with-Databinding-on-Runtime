@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -15,8 +9,7 @@ namespace KontakteApp
     {
         private string _connectionString = "";
         private string _caption = "";
-
-        SqlConnection sqlConnection = null;
+        private SqlDataAdapter dataAdapter;
 
         public Form1()
         {
@@ -43,39 +36,24 @@ namespace KontakteApp
                 this.Close();
             }
 
-            DataSet dataSet = new DataSet("Personen");
-            DataTable table = new DataTable("Kontakte");
+            SqlConnection sqlConnection = new SqlConnection(_connectionString);
+            SqlCommand sqlCommand = new SqlCommand("select * from dbo.Personen", sqlConnection);
+            dataAdapter = new SqlDataAdapter(sqlCommand);
 
-            sqlConnection = new SqlConnection(_connectionString);
+            kontakteDataSet = new DataSet("Firmen Kontakte");
+            kontakteDataSet.Tables.Add("Kontakte");
+            dataAdapter.Fill(kontakteDataSet.Tables["Kontakte"]);
 
-            string query = "select * from dbo.Personen";
-
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-            sqlConnection.Open();
-
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            sqlDataAdapter.Fill(table);
-            dataSet.Tables.Add(table);
-
-            this.personenTableAdapter.Fill(this.kontakteDBDataSet.Personen);
+            kontakteBindingNavigator.BindingSource = kontakteBindingSource;
+            kontakteBindingSource.DataMember = "Personen";
+            BindingControls(kontakteDataSet.Tables["Kontakte"]);
 
         }
 
-        private void personenBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Validate();
-            this.personenBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.kontakteDBDataSet);
-        }
-
-        private void buttonPrevious_Click(object sender, EventArgs e)
-        {
-            personenBindingSource.MovePrevious();
-        }
-
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            personenBindingSource.MoveNext();
+            if (this.Owner != null)
+                this.Owner.Dispose();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,10 +67,38 @@ namespace KontakteApp
             form2.ShowDialog();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void buttonPrevious_Click(object sender, EventArgs e)
         {
-            if(this.Owner != null)
-                this.Owner.Dispose();
+            kontakteBindingSource.MovePrevious();
         }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            kontakteBindingSource.MoveNext();
+        }
+
+        private void kontakteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.kontakteBindingSource.EndEdit();
+
+            SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
+            dataAdapter.UpdateCommand = builder.GetUpdateCommand();
+            dataAdapter.Update(kontakteDataSet, "Kontakte");
+
+        }
+
+        private void BindingControls(DataTable dt)
+        {
+            kontakteBindingSource.DataSource = dt;
+            kontakt_IDTextBox.DataBindings.Add(new Binding("Text", kontakteBindingSource, "Kontakt_ID", true));
+            vornameTextBox.DataBindings.Add(new Binding("Text", kontakteBindingSource, "Vorname", true));
+            nachnameTextBox.DataBindings.Add(new Binding("Text", kontakteBindingSource, "Nachname", true));
+            firmaTextBox.DataBindings.Add(new Binding("Text", kontakteBindingSource, "Firma", true));
+            telefonTextBox.DataBindings.Add(new Binding("Text", kontakteBindingSource, "Telefon", true));
+            emailTextBox.DataBindings.Add(new Binding("Text", kontakteBindingSource, "Email", true));
+            anrufDateTimePicker.DataBindings.Add(new Binding("Value", kontakteBindingSource, "Anruf", true));
+        }
+
     }
 }

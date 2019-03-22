@@ -96,14 +96,6 @@
     <Compile Include="Forms\FormConnect.Designer.cs">
       <DependentUpon>FormConnect.cs</DependentUpon>
     </Compile>
-    <Compile Include="KontakteDBDataSet.cs">
-      <DependentUpon>KontakteDBDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="KontakteDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KontakteDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLHelper.cs" />
@@ -121,18 +113,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="KontakteDBDataSet.xsc">
-      <DependentUpon>KontakteDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="KontakteDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>KontakteDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="KontakteDBDataSet.xss">
-      <DependentUpon>KontakteDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Kontakte_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

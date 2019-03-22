@@ -38,9 +38,6 @@
             System.Windows.Forms.Label kundeLabel;
             System.Windows.Forms.Label anrufLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            this.kontakteDBDataSet = new KontakteApp.KontakteDBDataSet();
-            this.personen2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableAdapterManager = new KontakteApp.KontakteDBDataSetTableAdapters.TableAdapterManager();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -53,21 +50,12 @@
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.personen2BindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.personen2BindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.personenBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.personenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.personenDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.personenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personenTableAdapter = new KontakteApp.KontakteDBDataSetTableAdapters.PersonenTableAdapter();
             this.kontakt_IDTextBox = new System.Windows.Forms.TextBox();
             this.vornameTextBox = new System.Windows.Forms.TextBox();
             this.nachnameTextBox = new System.Windows.Forms.TextBox();
@@ -76,6 +64,7 @@
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.kundeCheckBox = new System.Windows.Forms.CheckBox();
             this.anrufDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.personenDataSet = new System.Data.DataSet();
             kontakt_IDLabel = new System.Windows.Forms.Label();
             vornameLabel = new System.Windows.Forms.Label();
             nachnameLabel = new System.Windows.Forms.Label();
@@ -84,13 +73,12 @@
             emailLabel = new System.Windows.Forms.Label();
             kundeLabel = new System.Windows.Forms.Label();
             anrufLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.kontakteDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personen2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personen2BindingNavigator)).BeginInit();
-            this.personen2BindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personenBindingNavigator)).BeginInit();
+            this.personenBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personenDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personenDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // kontakt_IDLabel
@@ -164,22 +152,6 @@
             anrufLabel.Size = new System.Drawing.Size(35, 13);
             anrufLabel.TabIndex = 17;
             anrufLabel.Text = "Anruf:";
-            // 
-            // kontakteDBDataSet
-            // 
-            this.kontakteDBDataSet.DataSetName = "KontakteDBDataSet";
-            this.kontakteDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // personen2BindingSource
-            // 
-            this.personen2BindingSource.DataMember = "Personen2";
-            this.personen2BindingSource.DataSource = this.kontakteDBDataSet;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.PersonenTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = KontakteApp.KontakteDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -273,16 +245,15 @@
             this.personen2BindingNavigatorSaveItem.Name = "personen2BindingNavigatorSaveItem";
             this.personen2BindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.personen2BindingNavigatorSaveItem.Text = "Save Data";
-            this.personen2BindingNavigatorSaveItem.Click += new System.EventHandler(this.personen2BindingNavigatorSaveItem_Click);
+            this.personen2BindingNavigatorSaveItem.Click += new System.EventHandler(this.personenBindingNavigatorSaveItem_Click);
             // 
-            // personen2BindingNavigator
+            // personenBindingNavigator
             // 
-            this.personen2BindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.personen2BindingNavigator.BindingSource = this.personenBindingSource;
-            this.personen2BindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.personen2BindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.personen2BindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.personen2BindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.personenBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.personenBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.personenBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.personenBindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.personenBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
@@ -296,89 +267,33 @@
             this.bindingNavigatorDeleteItem,
             this.personen2BindingNavigatorSaveItem,
             this.toolStripSeparator1});
-            this.personen2BindingNavigator.Location = new System.Drawing.Point(0, 360);
-            this.personen2BindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.personen2BindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.personen2BindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.personen2BindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.personen2BindingNavigator.Name = "personen2BindingNavigator";
-            this.personen2BindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.personen2BindingNavigator.Size = new System.Drawing.Size(914, 25);
-            this.personen2BindingNavigator.TabIndex = 0;
-            this.personen2BindingNavigator.Text = "bindingNavigator1";
+            this.personenBindingNavigator.Location = new System.Drawing.Point(0, 360);
+            this.personenBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.personenBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.personenBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.personenBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.personenBindingNavigator.Name = "personenBindingNavigator";
+            this.personenBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.personenBindingNavigator.Size = new System.Drawing.Size(914, 25);
+            this.personenBindingNavigator.TabIndex = 0;
+            this.personenBindingNavigator.Text = "bindingNavigator1";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // personenBindingSource
+            // 
+            this.personenBindingSource.DataMember = "Personen";
+            // 
             // personenDataGridView
             // 
-            this.personenDataGridView.AutoGenerateColumns = false;
             this.personenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.personenDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn8});
-            this.personenDataGridView.DataSource = this.personenBindingSource;
             this.personenDataGridView.Location = new System.Drawing.Point(315, 27);
             this.personenDataGridView.Name = "personenDataGridView";
             this.personenDataGridView.Size = new System.Drawing.Size(588, 313);
             this.personenDataGridView.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Kontakt_ID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Kontakt_ID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Vorname";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Vorname";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Nachname";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Nachname";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Firma";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Firma";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Telefon";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Telefon";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Email";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Email";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Kunde";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Kunde";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Anruf";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Anruf";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
             // menuStrip1
             // 
@@ -400,18 +315,8 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // personenBindingSource
-            // 
-            this.personenBindingSource.DataMember = "Personen";
-            this.personenBindingSource.DataSource = this.kontakteDBDataSet;
-            // 
-            // personenTableAdapter
-            // 
-            this.personenTableAdapter.ClearBeforeFill = true;
-            // 
             // kontakt_IDTextBox
             // 
-            this.kontakt_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Kontakt_ID", true));
             this.kontakt_IDTextBox.Location = new System.Drawing.Point(94, 51);
             this.kontakt_IDTextBox.Name = "kontakt_IDTextBox";
             this.kontakt_IDTextBox.Size = new System.Drawing.Size(78, 20);
@@ -419,7 +324,6 @@
             // 
             // vornameTextBox
             // 
-            this.vornameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Vorname", true));
             this.vornameTextBox.Location = new System.Drawing.Point(94, 77);
             this.vornameTextBox.Name = "vornameTextBox";
             this.vornameTextBox.Size = new System.Drawing.Size(200, 20);
@@ -427,7 +331,6 @@
             // 
             // nachnameTextBox
             // 
-            this.nachnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Nachname", true));
             this.nachnameTextBox.Location = new System.Drawing.Point(94, 103);
             this.nachnameTextBox.Name = "nachnameTextBox";
             this.nachnameTextBox.Size = new System.Drawing.Size(200, 20);
@@ -435,7 +338,6 @@
             // 
             // firmaTextBox
             // 
-            this.firmaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Firma", true));
             this.firmaTextBox.Location = new System.Drawing.Point(94, 129);
             this.firmaTextBox.Name = "firmaTextBox";
             this.firmaTextBox.Size = new System.Drawing.Size(200, 20);
@@ -443,7 +345,6 @@
             // 
             // telefonTextBox
             // 
-            this.telefonTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Telefon", true));
             this.telefonTextBox.Location = new System.Drawing.Point(94, 155);
             this.telefonTextBox.Name = "telefonTextBox";
             this.telefonTextBox.Size = new System.Drawing.Size(200, 20);
@@ -451,7 +352,6 @@
             // 
             // emailTextBox
             // 
-            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personenBindingSource, "Email", true));
             this.emailTextBox.Location = new System.Drawing.Point(94, 181);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(200, 20);
@@ -459,21 +359,22 @@
             // 
             // kundeCheckBox
             // 
-            this.kundeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.personenBindingSource, "Kunde", true));
             this.kundeCheckBox.Location = new System.Drawing.Point(94, 207);
             this.kundeCheckBox.Name = "kundeCheckBox";
-            this.kundeCheckBox.Size = new System.Drawing.Size(200, 24);
+            this.kundeCheckBox.Size = new System.Drawing.Size(27, 24);
             this.kundeCheckBox.TabIndex = 16;
-            this.kundeCheckBox.Text = "checkBox1";
             this.kundeCheckBox.UseVisualStyleBackColor = true;
             // 
             // anrufDateTimePicker
             // 
-            this.anrufDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.personenBindingSource, "Anruf", true));
             this.anrufDateTimePicker.Location = new System.Drawing.Point(94, 237);
             this.anrufDateTimePicker.Name = "anrufDateTimePicker";
             this.anrufDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.anrufDateTimePicker.TabIndex = 18;
+            // 
+            // personenDataSet
+            // 
+            this.personenDataSet.DataSetName = "NewDataSet";
             // 
             // Form2
             // 
@@ -497,7 +398,7 @@
             this.Controls.Add(anrufLabel);
             this.Controls.Add(this.anrufDateTimePicker);
             this.Controls.Add(this.personenDataGridView);
-            this.Controls.Add(this.personen2BindingNavigator);
+            this.Controls.Add(this.personenBindingNavigator);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -507,24 +408,21 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Papierfabrik Objekthausen - Kontakte";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kontakteDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personen2BindingNavigator)).EndInit();
-            this.personen2BindingNavigator.ResumeLayout(false);
-            this.personen2BindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personenBindingNavigator)).EndInit();
+            this.personenBindingNavigator.ResumeLayout(false);
+            this.personenBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personenDataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personenDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private KontakteDBDataSet kontakteDBDataSet;
-        private System.Windows.Forms.BindingSource personen2BindingSource;
-        private KontakteDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        //private KontakteDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
@@ -537,7 +435,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton personen2BindingNavigatorSaveItem;
-        private System.Windows.Forms.BindingNavigator personen2BindingNavigator;
+        private System.Windows.Forms.BindingNavigator personenBindingNavigator;
         private System.Windows.Forms.DataGridView personenDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -551,7 +449,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.BindingSource personenBindingSource;
-        private KontakteDBDataSetTableAdapters.PersonenTableAdapter personenTableAdapter;
+        //private KontakteDBDataSetTableAdapters.PersonenTableAdapter personenTableAdapter;
         private System.Windows.Forms.TextBox kontakt_IDTextBox;
         private System.Windows.Forms.TextBox vornameTextBox;
         private System.Windows.Forms.TextBox nachnameTextBox;
@@ -560,5 +458,6 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.CheckBox kundeCheckBox;
         private System.Windows.Forms.DateTimePicker anrufDateTimePicker;
+        private System.Data.DataSet personenDataSet;
     }
 }
