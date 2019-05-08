@@ -23,17 +23,6 @@ namespace KontakteApp.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=A:\\Database\\Kontakte\\Kontakte" +
-            "DB.mdf;Integrated Security=True")]
-        public string KontakteDBConnectionString {
-            get {
-                return ((string)(this["KontakteDBConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("urhetuhertwerteörz")]
@@ -43,6 +32,28 @@ namespace KontakteApp.Properties {
             }
             set {
                 this["Test"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=KontakteDB;Integrated Security" +
+            "=True")]
+        public string KontakteDBConnectionString {
+            get {
+                return ((string)(this["KontakteDBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Database\\Kontakte\\Kontakte" +
+            "DB.mdf;Initial Catalog=KontakteDB;Integrated Security=True")]
+        public string KontakteDBConnectionString1 {
+            get {
+                return ((string)(this["KontakteDBConnectionString1"]));
             }
         }
     }
