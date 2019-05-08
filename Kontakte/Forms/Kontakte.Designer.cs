@@ -1,6 +1,6 @@
 ﻿namespace KontakteApp
 {
-    partial class Form1
+    partial class Kontakte
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -37,7 +37,7 @@
             System.Windows.Forms.Label telefonLabel;
             System.Windows.Forms.Label kontakt_IDLabel;
             System.Windows.Forms.Label anrufLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kontakte));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kontakteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -447,8 +447,8 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Papierfabrik Objekthausen - Kontakte";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Kontake_FormClosing);
+            this.Load += new System.EventHandler(this.Kontakte_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kontakteBindingNavigator)).EndInit();
             this.kontakteBindingNavigator.ResumeLayout(false);

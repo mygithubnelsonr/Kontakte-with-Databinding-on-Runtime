@@ -1,6 +1,6 @@
 ﻿namespace KontakteApp
 {
-    partial class Form2
+    partial class GridForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label kundeLabel;
             System.Windows.Forms.Label anrufLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridForm));
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -64,7 +64,7 @@
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.kundeCheckBox = new System.Windows.Forms.CheckBox();
             this.anrufDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.personenDataSet = new System.Data.DataSet();
+            this.kontakteDataSet = new System.Data.DataSet();
             kontakt_IDLabel = new System.Windows.Forms.Label();
             vornameLabel = new System.Windows.Forms.Label();
             nachnameLabel = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.personenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personenDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.personenDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // kontakt_IDLabel
@@ -374,7 +374,7 @@
             // 
             // personenDataSet
             // 
-            this.personenDataSet.DataSetName = "NewDataSet";
+            this.kontakteDataSet.DataSetName = "NewDataSet";
             // 
             // Form2
             // 
@@ -407,7 +407,7 @@
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Papierfabrik Objekthausen - Kontakte";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Load += new System.EventHandler(this.GridForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.personenBindingNavigator)).EndInit();
             this.personenBindingNavigator.ResumeLayout(false);
             this.personenBindingNavigator.PerformLayout();
@@ -415,7 +415,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.personenDataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.personenDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kontakteDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,6 +458,6 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.CheckBox kundeCheckBox;
         private System.Windows.Forms.DateTimePicker anrufDateTimePicker;
-        private System.Data.DataSet personenDataSet;
+        private System.Data.DataSet kontakteDataSet;
     }
 }

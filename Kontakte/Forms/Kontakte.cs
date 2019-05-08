@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Data;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace KontakteApp
 {
-    public partial class Form1 : Form
+    public partial class Kontakte : Form
     {
         private string _connectionString = "";
         private string _caption = "";
         private SqlDataAdapter dataAdapter;
 
-        public Form1()
+        public Kontakte()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Kontakte_Load(object sender, EventArgs e)
         {
             Config config = Config.GetInstance("Config.xml");
 
@@ -40,17 +40,17 @@ namespace KontakteApp
             SqlCommand sqlCommand = new SqlCommand("select * from dbo.Personen", sqlConnection);
             dataAdapter = new SqlDataAdapter(sqlCommand);
 
-            kontakteDataSet = new DataSet("Firmen Kontakte");
-            kontakteDataSet.Tables.Add("Kontakte");
-            dataAdapter.Fill(kontakteDataSet.Tables["Kontakte"]);
+            kontakteDataSet = new DataSet("Kontakte");
+            kontakteDataSet.Tables.Add("Personen");
+            dataAdapter.Fill(kontakteDataSet.Tables["Personen"]);
 
             kontakteBindingNavigator.BindingSource = kontakteBindingSource;
             kontakteBindingSource.DataMember = "Personen";
-            BindingControls(kontakteDataSet.Tables["Kontakte"]);
+            BindingControls(kontakteDataSet.Tables["Personen"]);
 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Kontake_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.Owner != null)
                 this.Owner.Dispose();
@@ -63,8 +63,8 @@ namespace KontakteApp
 
         private void showGridFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form2 = new Form2();
-            form2.ShowDialog();
+            Form form = new GridForm();
+            form.ShowDialog();
         }
 
         private void buttonPrevious_Click(object sender, EventArgs e)

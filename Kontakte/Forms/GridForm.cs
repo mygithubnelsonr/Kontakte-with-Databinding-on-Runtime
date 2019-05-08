@@ -5,18 +5,18 @@ using System.Data.SqlClient;
 
 namespace KontakteApp
 {
-    public partial class Form2 : Form
+    public partial class GridForm : Form
     {
         private string _connectionString = "";
         private string _caption = "";
         private SqlDataAdapter dataAdapter;
 
-        public Form2()
+        public GridForm()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void GridForm_Load(object sender, EventArgs e)
         {
             Config config = Config.GetInstance("Config.xml");
 
@@ -40,13 +40,13 @@ namespace KontakteApp
             SqlCommand sqlCommand = new SqlCommand("select * from dbo.Personen", sqlConnection);
             dataAdapter = new SqlDataAdapter(sqlCommand);
 
-            personenDataSet = new DataSet("Firmen Personen");
-            personenDataSet.Tables.Add("Personen");
-            dataAdapter.Fill(personenDataSet.Tables["Personen"]);
+            kontakteDataSet = new DataSet("Kontakte");
+            kontakteDataSet.Tables.Add("Personen");
+            dataAdapter.Fill(kontakteDataSet.Tables["Personen"]);
 
             personenBindingNavigator.BindingSource = personenBindingSource;
             personenBindingSource.DataMember = "Personen";
-            BindingControls(personenDataSet.Tables["Personen"]);
+            BindingControls(kontakteDataSet.Tables["Personen"]);
 
             personenDataGridView.DataSource = personenBindingSource;
         }
@@ -63,7 +63,7 @@ namespace KontakteApp
 
             SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
             dataAdapter.UpdateCommand = builder.GetUpdateCommand();
-            dataAdapter.Update(personenDataSet, "Kontakte");
+            dataAdapter.Update(kontakteDataSet, "Kontakte");
         }
 
         private void BindingControls(DataTable dt)
