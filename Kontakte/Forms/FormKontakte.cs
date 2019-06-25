@@ -5,27 +5,30 @@ using System.Windows.Forms;
 
 namespace KontakteApp
 {
-    public partial class Kontakte : Form
+    public partial class FormKontakte : Form
     {
-        private string _connectionString = "";
-        private string _caption = "";
+        private string _connectionString;
+        private string _caption;
         private SqlDataAdapter dataAdapter;
 
-        public Kontakte()
+        public string ConnectionString { get => _connectionString; set => _connectionString = value; }
+        public string Caption { get => _caption; set => _caption = value; }
+
+        public FormKontakte()
         {
             InitializeComponent();
         }
 
-        private void Kontakte_Load(object sender, EventArgs e)
+        private void FormKontakte_Load(object sender, EventArgs e)
         {
             Config config = Config.GetInstance("Config.xml");
 
-            _connectionString = config.ConnectionString;
-            _caption = config.Caption;
+            ConnectionString = config.ConnectionString;
+            Caption = config.Caption;
 
             try
             {
-                SQLHelper helper = new SQLHelper(_connectionString);
+                SQLHelper helper = new SQLHelper(ConnectionString);
                 bool connectionOK = helper.IsConnected;
             }
             catch
@@ -36,7 +39,7 @@ namespace KontakteApp
                 this.Close();
             }
 
-            SqlConnection sqlConnection = new SqlConnection(_connectionString);
+            SqlConnection sqlConnection = new SqlConnection(ConnectionString);
             SqlCommand sqlCommand = new SqlCommand("select * from dbo.Personen", sqlConnection);
             dataAdapter = new SqlDataAdapter(sqlCommand);
 
@@ -50,7 +53,7 @@ namespace KontakteApp
 
         }
 
-        private void Kontake_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormKontake_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.Owner != null)
                 this.Owner.Dispose();
@@ -63,7 +66,7 @@ namespace KontakteApp
 
         private void showGridFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form = new GridForm();
+            Form form = new FormGrid();
             form.ShowDialog();
         }
 

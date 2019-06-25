@@ -16,7 +16,7 @@ namespace KontakteApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Kontakte());
+            Application.Run(new FormKontakte());
         }
     }
 }

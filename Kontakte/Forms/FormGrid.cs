@@ -1,31 +1,34 @@
 ﻿using System;
 using System.Data;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace KontakteApp
 {
-    public partial class GridForm : Form
+    public partial class FormGrid : Form
     {
-        private string _connectionString = "";
-        private string _caption = "";
+        private string _connectionString;
+        private string _caption;
         private SqlDataAdapter dataAdapter;
 
-        public GridForm()
+        public string ConnectionString { get => _connectionString; set => _connectionString = value; }
+        public string Caption { get => _caption; set => _caption = value; }
+
+        public FormGrid()
         {
             InitializeComponent();
         }
 
-        private void GridForm_Load(object sender, EventArgs e)
+        private void FormGrid_Load(object sender, EventArgs e)
         {
             Config config = Config.GetInstance("Config.xml");
 
-            _connectionString = config.ConnectionString;
-            _caption = config.Caption;
+            ConnectionString = config.ConnectionString;
+            Caption = config.Caption;
 
             try
             {
-                SQLHelper helper = new SQLHelper(_connectionString);
+                SQLHelper helper = new SQLHelper(ConnectionString);
                 bool connectionOK = helper.IsConnected;
             }
             catch
@@ -36,7 +39,7 @@ namespace KontakteApp
                 this.Close();
             }
 
-            SqlConnection sqlConnection = new SqlConnection(_connectionString);
+            SqlConnection sqlConnection = new SqlConnection(ConnectionString);
             SqlCommand sqlCommand = new SqlCommand("select * from dbo.Personen", sqlConnection);
             dataAdapter = new SqlDataAdapter(sqlCommand);
 

@@ -1,6 +1,6 @@
 ﻿namespace KontakteApp
 {
-    partial class GridForm
+    partial class FormGrid
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label kundeLabel;
             System.Windows.Forms.Label anrufLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGrid));
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -407,7 +407,7 @@
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Papierfabrik Objekthausen - Kontakte";
-            this.Load += new System.EventHandler(this.GridForm_Load);
+            this.Load += new System.EventHandler(this.FormGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.personenBindingNavigator)).EndInit();
             this.personenBindingNavigator.ResumeLayout(false);
             this.personenBindingNavigator.PerformLayout();
