@@ -52,6 +52,9 @@ namespace KontakteApp
             BindingControls(kontakteDataSet.Tables["Personen"]);
 
             personenDataGridView.DataSource = personenBindingSource;
+
+            personenDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
